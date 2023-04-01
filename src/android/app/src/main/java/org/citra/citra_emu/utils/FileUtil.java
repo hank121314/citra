@@ -4,7 +4,6 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.Build;
 import android.os.ParcelFileDescriptor;
 import android.provider.DocumentsContract;
 import android.system.Os;
@@ -429,12 +428,9 @@ public class FileUtil {
         String path = uri.getPath();
         final int slash_index = path.lastIndexOf('/');
         path = path.substring(slash_index + 1);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            return path;
-        }
         // On Android versions below 10, it is possible to select the storage root, which might result in filenames with a colon.
         final int colon_index = path.indexOf(':');
-        return path.substring(colon_index + 1) ;
+        return path.substring(colon_index + 1);
     }
 
     public static double getFreeSpace(Context context, Uri uri) {
