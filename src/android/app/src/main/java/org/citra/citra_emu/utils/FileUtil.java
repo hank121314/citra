@@ -426,11 +426,11 @@ public class FileUtil {
 
     public static String getFilenameWithExtensions(Uri uri) {
         String path = uri.getPath();
-        final int slash_index = path.lastIndexOf('/');
-        path = path.substring(slash_index + 1);
+        final int slashIndex = path.lastIndexOf('/');
+        path = path.substring(slashIndex + 1);
         // On Android versions below 10, it is possible to select the storage root, which might result in filenames with a colon.
-        final int colon_index = path.indexOf(':');
-        return path.substring(colon_index + 1);
+        final int colonIndex = path.indexOf(':');
+        return path.substring(colonIndex + 1);
     }
 
     public static double getFreeSpace(Context context, Uri uri) {
